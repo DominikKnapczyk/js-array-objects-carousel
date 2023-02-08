@@ -1,6 +1,4 @@
-.debug {
-  border: 2px dashed red;
-}
+
 
 body {
   display: flex;
@@ -32,12 +30,15 @@ body {
   display: flex;
   flex-direction: column;
 
+  position: relative;
+
   width: 20%;
 }
 
 .thumnail  {
   width: 100%;
   height: calc(100% /5);
+  opacity: 0.5;
 }
 
 img {
@@ -45,6 +46,32 @@ img {
   height: 100%;
 
   object-fit: cover;
+}
+
+.arrow {
+  position: absolute;
+  color: white;
+  font-size: 40px;
+  padding: 5px;
 
   cursor: pointer;
+  z-index: 1;
+}
+
+.arrow-up {
+  left: 45%;
+  top: 0px;
+
+  transform: rotate(270deg);
+}
+
+.arrow-down {
+  left: 45%;
+  bottom: 0px;
+
+  transform: rotate(90deg);
+}
+
+#img-01 {
+  opacity: 1;
 }
