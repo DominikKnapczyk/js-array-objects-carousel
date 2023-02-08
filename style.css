@@ -1,5 +1,3 @@
-
-
 body {
   display: flex;
   justify-content: center;
@@ -58,6 +56,12 @@ img {
   z-index: 1;
 }
 
+.arrow:hover {
+  color: #555555;
+  cursor: pointer;
+  transition: color 0.5s ease;
+}
+
 .arrow-up {
   left: 45%;
   top: 0px;
@@ -74,4 +78,35 @@ img {
 
 #img-01 {
   opacity: 1;
+}
+
+#play {
+  display: none;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  background-color: #dddddd;
+  border: none;
+  color: #333333;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  width: 100%;
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+button:hover {
+  background-color: #bbbbbb;
+  cursor: pointer;
 }

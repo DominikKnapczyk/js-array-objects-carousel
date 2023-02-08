@@ -29,6 +29,9 @@ const images = [
 // Inizializziamo un contatore per tenere traccia dell'immagine corrente
 let currentImage = 0;
 
+// Si assegna un valore il base alla direzione di scorrimento
+let scrollDirection = 0; // Scorrimento di default
+
 // Selezioniamo i due pulsanti da utilizzare
 const nextBtn = document.querySelector('.next');
 const prevBtn = document.querySelector('.prev');
@@ -38,6 +41,10 @@ const bigImage = document.querySelector('.big-image');
 
 // Funzione che mostra l'immagine successiva nell'array
 function showNextImage() {
+
+  // Si assegna un valore il base alla direzione di scorrimento
+  scrollDirection = 0;
+
   // Incrementiamo il contatore per l'immagine successiva
   currentImage++;
 
@@ -53,15 +60,22 @@ function showNextImage() {
   // Rendiamo l'immagine non opaca
   selectedImage();
 
-  // Ferma la ripetizione della funzione showNextImage()
-  clearInterval(intervalId);
+  if (timer == true) {
 
-  // Avvia la ripetizione della funzione showNextImage() ogni 5 secondi
-  intervalId = setInterval(showNextImage, 5000);
+    // Ferma la ripetizione della funzione showNextImage()
+    clearInterval(intervalId);
+
+    // Avvia la ripetizione della funzione showNextImage() ogni 5 secondi
+    intervalId = setInterval(showNextImage, 5000);
+  }
 }
 
 // Funzione che mostra l'immagine precedente nell'array
 function showPrevImage() {
+
+  // Si assegna un valore il base alla direzione di scorrimento
+  scrollDirection = 1;
+
   // Decrementiamo il contatore per l'immagine precedente
   currentImage--;
 
@@ -73,15 +87,19 @@ function showPrevImage() {
 
   // Aggiorniamo il contenuto del div con l'immagine corrente
   bigImage.innerHTML = `<img src="${images[currentImage].image}" alt="${images[currentImage].title}">`;
-
+ 
   // Rendiamo l'immagine non opaca
   selectedImage();
+ 
+  // Se la ripetizione delle foto è attiva
+  if (timer == true) {
 
-  // Ferma la ripetizione della funzione showNextImage()
-  clearInterval(intervalId);
+    // Ferma la ripetizione della funzione showNextImage()
+    clearInterval(intervalId);
 
-  // Avvia la ripetizione della funzione showPrevImage() ogni 5 secondi
-  intervalId = setInterval(showPrevImage, 5000);
+    // Avvia la ripetizione della funzione showPrevImage() ogni 5 secondi
+    intervalId = setInterval(showPrevImage, 5000);
+  }
 }
 
 // Assegniamo le funzioni ai pulsanti per la navigazione
@@ -105,8 +123,90 @@ function selectedImage() {
   }
 }
 
-// Variabile per la funzione setInterval()
+// Variabile per il timer
 let intervalId;
+let timer = true;
 
 // Avvia la ripetizione della funzione showNextImage() ogni 5 secondi
 intervalId = setInterval(showNextImage, 5000);
+
+
+// Interrmopi la riproduzione
+document.getElementById("pause").addEventListener("click", function(){
+  
+  timer = false;
+  clearInterval(intervalId);
+
+  document.getElementById("pause").style.display = "none";
+  document.getElementById("play").style.display = "block";
+});
+
+// Riprendi la riproduzione
+document.getElementById("play").addEventListener("click", function(){
+  
+  timer = true;
+  clearInterval(intervalId);
+
+  if (scrollDirection == 0) {
+    intervalId = setInterval(showNextImage, 5000);
+  } else {
+    intervalId = setInterval(showPrevImage, 5000);
+  }
+
+  document.getElementById("play").style.display = "none";
+  document.getElementById("pause").style.display = "block";
+});
+
+// Inverti la riproduzione 
+document.getElementById("reverse").addEventListener("click", function(){
+
+  clearInterval(intervalId);
+
+  if (scrollDirection == 0) {
+    scrollDirection = 1;
+    if (timer == true) {
+    intervalId = setInterval(showPrevImage, 5000);
+    }
+  } else {
+    scrollDirection = 0;
+    if (timer == true) {
+    intervalId = setInterval(showNextImage, 5000);
+    }
+  }
+});
+
+// Visualizza la prima immagine sul ckick
+document.getElementById("img-01").addEventListener("click", function(){
+  currentImage = 0;
+  bigImage.innerHTML = `<img src="${images[currentImage].image}" alt="${images[currentImage].title}">`;
+  selectedImage();
+});
+
+
+// Visualizza la seconda immagine sul ckick
+document.getElementById("img-02").addEventListener("click", function(){
+  currentImage = 1;
+  bigImage.innerHTML = `<img src="${images[currentImage].image}" alt="${images[currentImage].title}">`;
+  selectedImage();
+});
+
+// Visualizza la terza immagine sul ckick
+document.getElementById("img-03").addEventListener("click", function(){
+  currentImage = 2;
+  bigImage.innerHTML = `<img src="${images[currentImage].image}" alt="${images[currentImage].title}">`;
+  selectedImage();
+});
+
+// Visualizza la quarta immagine sul ckick
+document.getElementById("img-04").addEventListener("click", function(){
+  currentImage = 3;
+  bigImage.innerHTML = `<img src="${images[currentImage].image}" alt="${images[currentImage].title}">`;
+  selectedImage();
+});
+
+// Visualizza la quinta immagine sul ckick
+document.getElementById("img-05").addEventListener("click", function(){
+  currentImage = 4;
+  bigImage.innerHTML = `<img src="${images[currentImage].image}" alt="${images[currentImage].title}">`;
+  selectedImage();
+});
