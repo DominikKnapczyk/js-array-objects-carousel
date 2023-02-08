@@ -54,8 +54,14 @@ function showNextImage() {
     currentImage = 0;
   }
 
-  // Aggiorniamo il contenuto del div con l'immagine corrente
-  bigImage.innerHTML = `<img src="${images[currentImage].image}" alt="${images[currentImage].title}">`;
+  // Aggiorniamo il contenuto del div principale
+  bigImage.innerHTML = `
+  <img src="${images[currentImage].image}" alt="${images[currentImage].title}">
+  <div class="text-container">
+    <h2>${images[currentImage].title}</h2>
+    <p>${images[currentImage].text}</p>
+  <div>
+  `;
 
   // Rendiamo l'immagine non opaca
   selectedImage();
@@ -85,8 +91,14 @@ function showPrevImage() {
     currentImage = images.length - 1;
   }
 
-  // Aggiorniamo il contenuto del div con l'immagine corrente
-  bigImage.innerHTML = `<img src="${images[currentImage].image}" alt="${images[currentImage].title}">`;
+  // Aggiorniamo il contenuto del div principale
+  bigImage.innerHTML = `
+  <img src="${images[currentImage].image}" alt="${images[currentImage].title}">
+  <div class="text-container">
+    <h2>${images[currentImage].title}</h2>
+    <p>${images[currentImage].text}</p>
+  <div>
+  `;
  
   // Rendiamo l'immagine non opaca
   selectedImage();
@@ -108,7 +120,13 @@ prevBtn.addEventListener('click', showPrevImage);
 
 
 // Mostriamo inizialmente la prima immagine
-bigImage.innerHTML = `<img src="${images[currentImage].image}" alt="${images[currentImage].title}">`;
+bigImage.innerHTML = `  
+<img src="${images[currentImage].image}" alt="${images[currentImage].title}">
+<div class="text-container">
+  <h2>${images[currentImage].title}</h2>
+  <p>${images[currentImage].text}</p>
+<div>
+`;
 
 // Si imposta l'opacità delle immagini in base a quella corrente
 function selectedImage() {
@@ -178,7 +196,13 @@ document.getElementById("reverse").addEventListener("click", function(){
 // Visualizza la prima immagine sul ckick
 document.getElementById("img-01").addEventListener("click", function(){
   currentImage = 0;
-  bigImage.innerHTML = `<img src="${images[currentImage].image}" alt="${images[currentImage].title}">`;
+  bigImage.innerHTML = `
+    <img src="${images[currentImage].image}" alt="${images[currentImage].title}">
+    <div class="text-container">
+      <h2>${images[currentImage].title}</h2>
+      <p>${images[currentImage].text}</p>
+    <div>
+  `;
   selectedImage();
 });
 
@@ -186,27 +210,51 @@ document.getElementById("img-01").addEventListener("click", function(){
 // Visualizza la seconda immagine sul ckick
 document.getElementById("img-02").addEventListener("click", function(){
   currentImage = 1;
-  bigImage.innerHTML = `<img src="${images[currentImage].image}" alt="${images[currentImage].title}">`;
+  bigImage.innerHTML = `
+    <img src="${images[currentImage].image}" alt="${images[currentImage].title}">
+    <div class="text-container">
+      <h2>${images[currentImage].title}</h2>
+      <p>${images[currentImage].text}</p>
+    <div>
+  `;
   selectedImage();
 });
 
 // Visualizza la terza immagine sul ckick
 document.getElementById("img-03").addEventListener("click", function(){
   currentImage = 2;
-  bigImage.innerHTML = `<img src="${images[currentImage].image}" alt="${images[currentImage].title}">`;
+  bigImage.innerHTML = `
+    <img src="${images[currentImage].image}" alt="${images[currentImage].title}">
+    <div class="text-container">
+      <h2>${images[currentImage].title}</h2>
+      <p>${images[currentImage].text}</p>
+    <div>
+  `;
   selectedImage();
 });
 
 // Visualizza la quarta immagine sul ckick
 document.getElementById("img-04").addEventListener("click", function(){
   currentImage = 3;
-  bigImage.innerHTML = `<img src="${images[currentImage].image}" alt="${images[currentImage].title}">`;
+  bigImage.innerHTML = `
+    <img src="${images[currentImage].image}" alt="${images[currentImage].title}">
+    <div class="text-container">
+      <h2>${images[currentImage].title}</h2>
+      <p>${images[currentImage].text}</p>
+    <div>
+  `;
   selectedImage();
 });
 
 // Visualizza la quinta immagine sul ckick
 document.getElementById("img-05").addEventListener("click", function(){
   currentImage = 4;
-  bigImage.innerHTML = `<img src="${images[currentImage].image}" alt="${images[currentImage].title}">`;
+  bigImage.innerHTML = `
+    <img src="${images[currentImage].image}" alt="${images[currentImage].title}">
+    <div class="text-container">
+      <h2>${images[currentImage].title}</h2>
+      <p>${images[currentImage].text}</p>
+    <div>
+  `;
   selectedImage();
 });

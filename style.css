@@ -22,6 +22,7 @@ body {
 
 .left-thumbnail-container {
   width: 80%;
+  position: relative;
 }
 
 .right-thumbnail-container {
@@ -109,4 +110,13 @@ button {
 button:hover {
   background-color: #bbbbbb;
   cursor: pointer;
+}
+
+.text-container {
+  color: white;
+  text-align: end;
+  width: 80%;
+  position: absolute;
+  bottom: 0;
+  right: 20px;
 }
