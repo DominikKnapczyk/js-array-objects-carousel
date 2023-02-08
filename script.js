@@ -49,6 +49,15 @@ function showNextImage() {
 
   // Aggiorniamo il contenuto del div con l'immagine corrente
   bigImage.innerHTML = `<img src="${images[currentImage].image}" alt="${images[currentImage].title}">`;
+
+  // Rendiamo l'immagine non opaca
+  selectedImage();
+
+  // Ferma la ripetizione della funzione showNextImage()
+  clearInterval(intervalId);
+
+  // Avvia la ripetizione della funzione showNextImage() ogni 5 secondi
+  intervalId = setInterval(showNextImage, 5000);
 }
 
 // Funzione che mostra l'immagine precedente nell'array
@@ -64,13 +73,21 @@ function showPrevImage() {
 
   // Aggiorniamo il contenuto del div con l'immagine corrente
   bigImage.innerHTML = `<img src="${images[currentImage].image}" alt="${images[currentImage].title}">`;
+
+  // Rendiamo l'immagine non opaca
+  selectedImage();
+
+  // Ferma la ripetizione della funzione showNextImage()
+  clearInterval(intervalId);
+
+  // Avvia la ripetizione della funzione showPrevImage() ogni 5 secondi
+  intervalId = setInterval(showPrevImage, 5000);
 }
 
 // Assegniamo le funzioni ai pulsanti per la navigazione
 nextBtn.addEventListener('click', showNextImage);
-nextBtn.addEventListener('click', selectedImage);
 prevBtn.addEventListener('click', showPrevImage);
-prevBtn.addEventListener('click', selectedImage);
+
 
 // Mostriamo inizialmente la prima immagine
 bigImage.innerHTML = `<img src="${images[currentImage].image}" alt="${images[currentImage].title}">`;
@@ -88,4 +105,8 @@ function selectedImage() {
   }
 }
 
+// Variabile per la funzione setInterval()
+let intervalId;
 
+// Avvia la ripetizione della funzione showNextImage() ogni 5 secondi
+intervalId = setInterval(showNextImage, 5000);
